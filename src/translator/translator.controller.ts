@@ -1,4 +1,4 @@
-import { Body, Controller, Inject, Post } from '@nestjs/common';
+import { Body, Controller, Inject, Post, forwardRef } from '@nestjs/common';
 import { TranslatorService } from './translator.service';
 // import { Language } from './enum/language.enum';
 import { SourceLanguageCode, TargetLanguageCode } from 'deepl-node';
@@ -6,7 +6,7 @@ import { SourceLanguageCode, TargetLanguageCode } from 'deepl-node';
 @Controller('translator')
 export class TranslatorController {
   constructor(
-    @Inject(TranslatorService)
+    @Inject(forwardRef(() => TranslatorService))
     private readonly translatorService: TranslatorService,
   ) {}
   @Post('/')

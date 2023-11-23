@@ -1,7 +1,21 @@
-import { IsString, Length } from 'class-validator';
+import {
+  IsEnum,
+  IsString,
+  Length,
+  MaxLength,
+  MinLength,
+} from 'class-validator';
 import { SourceLanguageCode, TargetLanguageCode } from 'deepl-node';
+import { SourceLangCode } from '../enum/sourceLangCode.enum';
+import { TargetLangCode } from '../enum/targetLangCode.enum';
+import { IsDifferent } from 'src/utils/IsDifferent.decorator';
 export class LangReqBody {
-  @IsString() @Length(2, 4) readonly sourceLang: SourceLanguageCode;
-  @IsString() @Length(1, 200) readonly text: string;
-  @IsString() @Length(2, 4) readonly targetLang: TargetLanguageCode;
+  @IsEnum(SourceLangCode)
+  @Length(2, 4)
+  readonly sourceLang: SourceLanguageCode;
+  @IsString() @MinLength(1) @MaxLength(200) readonly text: string;
+  @IsEnum(TargetLangCode)
+  @Length(2, 4)
+  @IsDifferent('sourceLang')
+  readonly targetLang: TargetLanguageCode;
 }
