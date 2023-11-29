@@ -1,6 +1,5 @@
 import { Body, Controller, Inject, Post, forwardRef } from '@nestjs/common';
 import { TranslatorService } from './translator.service';
-// import { Language } from './enum/language.enum';
 import { SourceLanguageCode, TargetLanguageCode } from 'deepl-node';
 
 @Controller('translator')
