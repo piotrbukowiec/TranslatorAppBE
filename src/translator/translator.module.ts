@@ -4,6 +4,12 @@ import { TranslatorService } from './translator.service';
 
 @Module({
   controllers: [TranslatorController],
-  providers: [TranslatorService],
+  providers: [
+    TranslatorService,
+    // {
+    //   provide: APP_FILTER,
+    //   useClass: ValidationErrorFilter,
+    // },
+  ],
 })
 export class TranslatorModule {}

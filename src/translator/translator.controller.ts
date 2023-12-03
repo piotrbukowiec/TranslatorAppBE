@@ -14,7 +14,7 @@ export class TranslatorController {
     @Body('text') text: string,
     @Body('targetLang') targetLang: TargetLanguageCode,
   ): Promise<string> {
+    // return await this.translatorService.translate(sourceLang, text, targetLang);
     return await this.translatorService.translate(sourceLang, text, targetLang);
   }
 }
-//Przemyśleć kwestię używania enum w tłumaczeniu, zasadzniczo komunikacja działa
