@@ -16,3 +16,4 @@ export class TranslatorService {
     );
   }
 }
+//TODO walidacja dto

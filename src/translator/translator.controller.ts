@@ -31,4 +31,3 @@ export class TranslatorController {
     );
   }
 }
-//TODO walidacja z użyciem middleware, enum z językami
