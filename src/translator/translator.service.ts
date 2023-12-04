@@ -1,13 +1,14 @@
-import { Injectable } from '@nestjs/common';
-// import { ValidationError } from 'class-validator/types/validation/ValidationError';
+import { Injectable, Res } from '@nestjs/common';
 import { Translator, SourceLanguageCode, TargetLanguageCode } from 'deepl-node';
-
+import { Response } from 'express';
 @Injectable()
 export class TranslatorService {
   async translate(
     sourceLang: SourceLanguageCode,
     text: string,
     targetLang: TargetLanguageCode,
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    @Res() res: Response,
   ): Promise<string> {
     const translator: Translator = new Translator(process.env.AUTH_KEY);
     return JSON.stringify(
@@ -15,6 +16,3 @@ export class TranslatorService {
     );
   }
 }
-/*Currently class-valdator does not work properly ()
-- @IsString() @Length(1, 200) text: string; does not work (if the value is greater than 200, class-validator doesn't throw an error)
-*/
