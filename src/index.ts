@@ -1,12 +1,13 @@
-import express from "express";
-import * as dotenv from "dotenv";
+import express, { ErrorRequestHandler } from "express";
 import { PROTOCOL as protocol, PORT as port, HOST as host } from "./constants";
 import { mainRouter } from "./routes/mainRouter";
 import { translatorRouter } from "./routes/translatorRouter";
-import { handleError } from "./utils/error";
+import { ValidationError, handleError } from "./utils/error";
 import cors from "cors";
-dotenv.config();
+import bodyParser from "body-parser";
+
 const app = express();
+
 app
   .use(
     cors({
@@ -15,6 +16,7 @@ app
       // optionsSuccessStatus: 202
     })
   )
+  .use(bodyParser.json()) // Dodano middleware do parsowania ciała żądania w formie JSON
   .use(handleError)
   .use(mainRouter)
   .use(translatorRouter)

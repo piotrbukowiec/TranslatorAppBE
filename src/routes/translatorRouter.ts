@@ -1,7 +1,7 @@
 import { Router, Request, Response } from "express";
 import { translate } from "../utils/translator";
 import { validateReq } from "../utils/validateReq";
-
+import { DEEPL_AUTH_KEY as authKey } from "../constants";
 const translatorRouter = Router();
 
 translatorRouter.post("/translator", async (req: Request, res: Response) => {

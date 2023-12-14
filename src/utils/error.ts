@@ -1,9 +1,10 @@
-import { Request, Response } from "express";
+import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
 class ValidationError extends Error {}
 const handleError = (
   err: Error | ValidationError,
   req: Request,
-  res: Response
+  res: Response,
+  next: NextFunction
 ) => {
   const isValidationError: boolean = err instanceof ValidationError;
   const status = isValidationError ? 400 : 500;
