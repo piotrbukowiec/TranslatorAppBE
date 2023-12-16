@@ -34,17 +34,12 @@ lerna-debug.log*
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# .env file
 .env
 
-# Ignore .env.local files that are not committed
 !.env.local
 
-# Ignore .env.development.local files that are not committed
 !.env.development.local
 
-# Ignore .env.test.local files that are not committed
 !.env.test.local
 
-# Ignore .env.production.local files that are not committed
 !.env.production.local
